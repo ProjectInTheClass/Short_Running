@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         
         print("프로젝트 생성 후 push Test")
         
-        print("태욱")
+        print("조성훈")
     }
 
 
