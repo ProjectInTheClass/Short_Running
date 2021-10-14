@@ -13,7 +13,7 @@
 		E00C3D50271868C200945E46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E00C3D4E271868C200945E46 /* Main.storyboard */; };
 		E00C3D52271868C400945E46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E00C3D51271868C400945E46 /* Assets.xcassets */; };
 		E00C3D55271868C400945E46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E00C3D53271868C400945E46 /* LaunchScreen.storyboard */; };
-		E00C3D5D2718690D00945E46 /* RGB.png in Resources */ = {isa = PBXBuildFile; fileRef = E00C3D5C2718690D00945E46 /* RGB.png */; };
+		E00C3D5F2718698400945E46 /* RGB.png in Resources */ = {isa = PBXBuildFile; fileRef = E00C3D5E2718698400945E46 /* RGB.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		E00C3D51271868C400945E46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E00C3D54271868C400945E46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E00C3D56271868C400945E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E00C3D5C2718690D00945E46 /* RGB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RGB.png; path = ../../../../../Downloads/RGB.png; sourceTree = "<group>"; };
+		E00C3D5E2718698400945E46 /* RGB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RGB.png; path = ../../../../../Downloads/RGB.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				E00C3D51271868C400945E46 /* Assets.xcassets */,
 				E00C3D53271868C400945E46 /* LaunchScreen.storyboard */,
 				E00C3D56271868C400945E46 /* Info.plist */,
-				E00C3D5C2718690D00945E46 /* RGB.png */,
+				E00C3D5E2718698400945E46 /* RGB.png */,
 			);
 			path = ShortRunning;
 			sourceTree = "<group>";
@@ -129,7 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E00C3D55271868C400945E46 /* LaunchScreen.storyboard in Resources */,
-				E00C3D5D2718690D00945E46 /* RGB.png in Resources */,
+				E00C3D5F2718698400945E46 /* RGB.png in Resources */,
 				E00C3D52271868C400945E46 /* Assets.xcassets in Resources */,
 				E00C3D50271868C200945E46 /* Main.storyboard in Resources */,
 			);
