@@ -6,23 +6,33 @@
 //
 
 import UIKit
-import MapKit
+import GoogleMaps
+import CoreLocation
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
+//    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var goalText: UILabel!
+    @IBOutlet weak var mapView: GMSMapView!
     
+    var flagForDidChangeCameraPosition = false
     var goalNumber = 10
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         goalText.text = String(goalNumber)
         
-        let initialLocation = CLLocation(latitude: 37.498095, longitude: 127.027610)
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        mapView.delegate = self
+        mapView.isMyLocationEnabled = true
         
-        mapView.centerToLocation(initialLocation)
+        
+        
         
         
     }
@@ -41,6 +51,27 @@ class MainViewController: UIViewController {
         goalText.text = String(goalNumber)
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 16.0)
+        mapView.camera = camera
+        mapView.animate(to: camera)
+        
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        mapView.settings.myLocationButton = true
+        locationManager.stopUpdatingLocation()
+        print("didchange 호출됨")
+    }
+    
+    
+    
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        locationManager.startUpdatingLocation()
+        return false
+    }
+    
     
     
     /*
@@ -55,11 +86,11 @@ class MainViewController: UIViewController {
 
 }
 
-private extension MKMapView {
-    func centerToLocation(_ location: CLLocation,
-                          regionRadius: CLLocationDistance = 1000) {
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        
-        setRegion(coordinateRegion, animated: true)
-    }
-}
+//private extension MKMapView {
+//    func centerToLocation(_ location: CLLocation,
+//                          regionRadius: CLLocationDistance = 1000) {
+//        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+//
+//        setRegion(coordinateRegion, animated: true)
+//    }
+//}

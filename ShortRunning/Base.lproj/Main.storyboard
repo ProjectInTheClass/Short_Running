@@ -16,9 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QIJ-1T-bHN">
-                                <rect key="frame" x="0.0" y="88" width="414" height="437"/>
-                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovf-LV-AqQ">
                                 <rect key="frame" x="20" y="792" width="374" height="50"/>
                                 <constraints>
@@ -106,36 +103,40 @@
                                     <constraint firstItem="aVw-m1-VuA" firstAttribute="centerY" secondItem="Jmp-Xd-XY9" secondAttribute="centerY" id="ZkD-Qs-IJZ"/>
                                     <constraint firstItem="B5m-VJ-b1K" firstAttribute="centerY" secondItem="Jmp-Xd-XY9" secondAttribute="centerY" id="dyl-lr-gDl"/>
                                     <constraint firstItem="aVw-m1-VuA" firstAttribute="centerX" secondItem="Jmp-Xd-XY9" secondAttribute="centerX" id="j4Z-s2-JYl"/>
+                                    <constraint firstItem="aVw-m1-VuA" firstAttribute="top" secondItem="Ehp-1K-mkP" secondAttribute="bottom" constant="58" id="pa2-FX-2Z1"/>
                                     <constraint firstItem="Ehp-1K-mkP" firstAttribute="top" secondItem="Jmp-Xd-XY9" secondAttribute="topMargin" constant="10" id="xHa-6R-8P0"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43v-5N-RnH" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="517"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SaO-hD-swQ"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Jmp-Xd-XY9" firstAttribute="top" secondItem="43v-5N-RnH" secondAttribute="bottom" constant="8" symbolic="YES" id="86y-Yu-VyW"/>
                             <constraint firstItem="ovf-LV-AqQ" firstAttribute="top" secondItem="Jmp-Xd-XY9" secondAttribute="bottom" constant="43" id="CSC-pA-UZl"/>
-                            <constraint firstItem="QIJ-1T-bHN" firstAttribute="top" secondItem="SaO-hD-swQ" secondAttribute="top" id="EpT-g5-tJt"/>
                             <constraint firstItem="Jmp-Xd-XY9" firstAttribute="leading" secondItem="SaO-hD-swQ" secondAttribute="leading" id="F0u-IF-BFb"/>
                             <constraint firstItem="ovf-LV-AqQ" firstAttribute="bottom" secondItem="SaO-hD-swQ" secondAttribute="bottom" constant="-20" id="FcS-kt-xHW"/>
-                            <constraint firstItem="SaO-hD-swQ" firstAttribute="bottom" secondItem="QIJ-1T-bHN" secondAttribute="bottom" constant="337" id="JEf-dn-7Ew"/>
+                            <constraint firstItem="43v-5N-RnH" firstAttribute="centerX" secondItem="S0B-iB-3co" secondAttribute="centerX" id="I3I-vl-2Ed"/>
                             <constraint firstItem="Jmp-Xd-XY9" firstAttribute="centerX" secondItem="ovf-LV-AqQ" secondAttribute="centerX" id="NNW-4o-c9r"/>
-                            <constraint firstItem="QIJ-1T-bHN" firstAttribute="trailing" secondItem="SaO-hD-swQ" secondAttribute="trailing" id="NsK-qZ-cRo"/>
                             <constraint firstItem="SaO-hD-swQ" firstAttribute="trailing" secondItem="ovf-LV-AqQ" secondAttribute="trailing" constant="20" id="SzR-p8-KgG"/>
-                            <constraint firstItem="Jmp-Xd-XY9" firstAttribute="top" secondItem="QIJ-1T-bHN" secondAttribute="bottom" id="c7a-rp-Mgf"/>
-                            <constraint firstItem="QIJ-1T-bHN" firstAttribute="top" secondItem="SaO-hD-swQ" secondAttribute="top" id="nqN-ol-trA"/>
+                            <constraint firstItem="43v-5N-RnH" firstAttribute="trailing" secondItem="SaO-hD-swQ" secondAttribute="trailing" id="YpX-Ru-qXy"/>
+                            <constraint firstItem="43v-5N-RnH" firstAttribute="leading" secondItem="SaO-hD-swQ" secondAttribute="leading" id="b92-nI-5ka"/>
+                            <constraint firstItem="43v-5N-RnH" firstAttribute="top" secondItem="S0B-iB-3co" secondAttribute="top" id="kzE-Rh-LHf"/>
                             <constraint firstItem="ovf-LV-AqQ" firstAttribute="leading" secondItem="SaO-hD-swQ" secondAttribute="leading" constant="20" id="vPw-Nc-b7T"/>
-                            <constraint firstItem="QIJ-1T-bHN" firstAttribute="leading" secondItem="SaO-hD-swQ" secondAttribute="leading" id="xWb-uv-5od"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xfm-BZ-IUn"/>
                     <connections>
                         <outlet property="goalText" destination="lbP-TA-7EI" id="h6d-4g-FhL"/>
-                        <outlet property="mapView" destination="QIJ-1T-bHN" id="vbE-Rs-Zbh"/>
+                        <outlet property="mapView" destination="43v-5N-RnH" id="8ws-K1-Xry"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7K-78-438" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493" y="-20"/>
+            <point key="canvasLocation" x="492.75362318840581" y="-20.089285714285712"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aPc-Kz-5vo">

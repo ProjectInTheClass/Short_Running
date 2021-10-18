@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		373CA9798CD7E5838DFC8D03 /* Pods_ShortRunning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E8B571B56B237BA6CCB4C8 /* Pods_ShortRunning.framework */; };
 		E00C3D49271868C200945E46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C3D48271868C200945E46 /* AppDelegate.swift */; };
 		E00C3D4B271868C200945E46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C3D4A271868C200945E46 /* SceneDelegate.swift */; };
 		E00C3D4D271868C200945E46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C3D4C271868C200945E46 /* ViewController.swift */; };
@@ -18,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B9309BEF26A4843F7F41788 /* Pods-ShortRunning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortRunning.debug.xcconfig"; path = "Target Support Files/Pods-ShortRunning/Pods-ShortRunning.debug.xcconfig"; sourceTree = "<group>"; };
+		7E4B24E9E6EE113C36B179DF /* Pods-ShortRunning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortRunning.release.xcconfig"; path = "Target Support Files/Pods-ShortRunning/Pods-ShortRunning.release.xcconfig"; sourceTree = "<group>"; };
+		B1E8B571B56B237BA6CCB4C8 /* Pods_ShortRunning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShortRunning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E00C3D45271868C200945E46 /* ShortRunning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortRunning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E00C3D48271868C200945E46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E00C3D4A271868C200945E46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				373CA9798CD7E5838DFC8D03 /* Pods_ShortRunning.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AEBA9A7DE0777ABFBF96FC25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1E8B571B56B237BA6CCB4C8 /* Pods_ShortRunning.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E00C3D3C271868C200945E46 = {
 			isa = PBXGroup;
 			children = (
 				E00C3D47271868C200945E46 /* ShortRunning */,
 				E00C3D46271868C200945E46 /* Products */,
+				E57CB8D9B8F5F4382760128E /* Pods */,
+				AEBA9A7DE0777ABFBF96FC25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +88,15 @@
 			path = ShortRunning;
 			sourceTree = "<group>";
 		};
+		E57CB8D9B8F5F4382760128E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B9309BEF26A4843F7F41788 /* Pods-ShortRunning.debug.xcconfig */,
+				7E4B24E9E6EE113C36B179DF /* Pods-ShortRunning.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E00C3D59271868C400945E46 /* Build configuration list for PBXNativeTarget "ShortRunning" */;
 			buildPhases = (
+				616DF69A2CF0C5FDCE53CDA4 /* [CP] Check Pods Manifest.lock */,
 				E00C3D41271868C200945E46 /* Sources */,
 				E00C3D42271868C200945E46 /* Frameworks */,
 				E00C3D43271868C200945E46 /* Resources */,
+				4448F768FE672225471DB36A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -139,6 +165,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4448F768FE672225471DB36A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShortRunning/Pods-ShortRunning-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShortRunning/Pods-ShortRunning-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShortRunning/Pods-ShortRunning-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		616DF69A2CF0C5FDCE53CDA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShortRunning-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E00C3D41271868C200945E46 /* Sources */ = {
@@ -211,6 +279,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -272,6 +341,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -292,11 +362,14 @@
 		};
 		E00C3D5A271868C400945E46 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B9309BEF26A4843F7F41788 /* Pods-ShortRunning.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W6Q6BA57X7;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShortRunning/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -319,11 +392,14 @@
 		};
 		E00C3D5B271868C400945E46 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E4B24E9E6EE113C36B179DF /* Pods-ShortRunning.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W6Q6BA57X7;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShortRunning/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
