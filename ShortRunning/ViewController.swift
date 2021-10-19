@@ -32,9 +32,6 @@ class ViewController: UIViewController {
         present(picker, animated: false, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
         picker.delegate = self
         
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0335CD3D271F0E83008FE691 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0335CD3C271F0E83008FE691 /* ListViewController.swift */; };
 		373CA9798CD7E5838DFC8D03 /* Pods_ShortRunning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E8B571B56B237BA6CCB4C8 /* Pods_ShortRunning.framework */; };
 		E00C3D49271868C200945E46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C3D48271868C200945E46 /* AppDelegate.swift */; };
 		E00C3D4B271868C200945E46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C3D4A271868C200945E46 /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0335CD3C271F0E83008FE691 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B9309BEF26A4843F7F41788 /* Pods-ShortRunning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortRunning.debug.xcconfig"; path = "Target Support Files/Pods-ShortRunning/Pods-ShortRunning.debug.xcconfig"; sourceTree = "<group>"; };
 		7E4B24E9E6EE113C36B179DF /* Pods-ShortRunning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortRunning.release.xcconfig"; path = "Target Support Files/Pods-ShortRunning/Pods-ShortRunning.release.xcconfig"; sourceTree = "<group>"; };
 		B1E8B571B56B237BA6CCB4C8 /* Pods_ShortRunning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShortRunning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				E00C3D53271868C400945E46 /* LaunchScreen.storyboard */,
 				E00C3D56271868C400945E46 /* Info.plist */,
 				E00C3D6027186BD100945E46 /* RGB.png */,
+				0335CD3C271F0E83008FE691 /* ListViewController.swift */,
 			);
 			path = ShortRunning;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				E00C3D4D271868C200945E46 /* ViewController.swift in Sources */,
 				E00C3D49271868C200945E46 /* AppDelegate.swift in Sources */,
 				E00C3D4B271868C200945E46 /* SceneDelegate.swift in Sources */,
+				0335CD3D271F0E83008FE691 /* ListViewController.swift in Sources */,
 				E00C3D63271C443A00945E46 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
