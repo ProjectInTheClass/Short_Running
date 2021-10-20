@@ -4,7 +4,6 @@
 //
 //  Created by 기태욱 on 2021/10/14.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -32,6 +31,9 @@ class ViewController: UIViewController {
         present(picker, animated: false, completion: nil)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
         picker.delegate = self
         
         
