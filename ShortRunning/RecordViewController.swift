@@ -9,9 +9,12 @@ import UIKit
 
 class RecordViewController: UIViewController {
 
+    @IBOutlet weak var goalMeterTextLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        goalMeterTextLabel.text = String((self.parent as! PageViewController).goalRunning)
         // Do any additional setup after loading the view.
     }
     

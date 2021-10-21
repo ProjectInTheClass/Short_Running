@@ -9,9 +9,11 @@ import UIKit
 
 class PageViewController: UIPageViewController {
     
+    var goalRunning: Int = 0
+    
     lazy var vcArray: [UIViewController] = {
-        return [self.vcInstance(name: "RecordVC"),
-                self.vcInstance(name: "RunningVC")]
+        return [self.vcInstance(name: "RecordVC") as! RecordViewController,
+                self.vcInstance(name: "RunningVC") as! RunningViewController ]
     }()
     
     private func vcInstance(name: String) -> UIViewController{
@@ -24,6 +26,8 @@ class PageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         
+        print("This is PageViewController : " + String(goalRunning))
+        
         if let firstVC = vcArray.first {
             setViewControllers([firstVC], direction: .forward, animated: false, completion: nil)
         }
@@ -32,15 +36,17 @@ class PageViewController: UIPageViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
+    
+            
+        }
+    
 
 }
 
