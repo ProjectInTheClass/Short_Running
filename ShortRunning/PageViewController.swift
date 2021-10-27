@@ -6,8 +6,21 @@
 //
 
 import UIKit
+import CoreLocation
 
 class PageViewController: UIPageViewController {
+    
+    let locationManager = CLLocationManager()
+    var currentLocation: CLLocationCoordinate2D!
+    
+    var locationData : [String: Double] = [:] as Dictionary
+    
+    private func requestAuthorization() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+    }
     
     var goalRunning: Int = 0
     
@@ -26,6 +39,8 @@ class PageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         
+        requestAuthorization()
+        
         print("This is PageViewController : " + String(goalRunning))
         
         if let firstVC = vcArray.first {
@@ -33,6 +48,7 @@ class PageViewController: UIPageViewController {
         }
 
         // Do any additional setup after loading the view.
+        
     }
     
 
@@ -47,10 +63,12 @@ class PageViewController: UIPageViewController {
             
         }
     
+    
 
 }
 
-extension PageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+extension PageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate, CLLocationManagerDelegate {
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = vcArray.firstIndex(of: viewController) else { return nil }
         
@@ -86,7 +104,23 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
         return firstViewControllerIndex
     }
     
-
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .authorizedWhenInUse {
+//            currentLocation = locationManager!.location?.coordinate
+//            LocationService.shared.setLocationData(lan: currentLocation.latitude, lon: currentLocation.longitude)
+        
+        }
+    }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let updatedLocation = locations.last
+        locationData.updateValue((updatedLocation?.coordinate.latitude)!, forKey: "lat")
+        locationData.updateValue((updatedLocation?.coordinate.longitude)!, forKey: "lon")
+        LocationService.shared.locationDataArray.append(locationData)
+        print(LocationService.shared.locationDataArray)
+        
+    }
+    
+
     
 }

@@ -16,6 +16,7 @@ class RecordViewController: UIViewController {
         
         goalMeterTextLabel.text = String((self.parent as! PageViewController).goalRunning)
         // Do any additional setup after loading the view.
+       
     }
     
 
@@ -29,7 +30,11 @@ class RecordViewController: UIViewController {
     }
     */
     @IBAction func stopButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        LocationService.shared.locationDataArray.removeAll()
+        self.dismiss(animated: true) {
+            self.parent?.navigationController?.popViewController(animated: true)
+        }
+        
     }	
     
 }

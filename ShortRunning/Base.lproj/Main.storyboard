@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--런닝-->
+        <!--Main View Controller-->
         <scene sceneID="oZk-Yn-7GS">
             <objects>
                 <viewController id="cbM-mr-7js" customClass="MainViewController" customModule="ShortRunning" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="VDH-ZN-BDv">
-                                <rect key="frame" x="124.5" y="224" width="165" height="101.5"/>
+                                <rect key="frame" x="124.5" y="268" width="165" height="101.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi4-9j-19v">
                                         <rect key="frame" x="68" y="0.0" width="29.5" height="20.5"/>
@@ -85,7 +85,6 @@
                             <constraint firstItem="NTH-y2-we5" firstAttribute="bottom" secondItem="2LX-yh-Ej1" secondAttribute="bottom" constant="100" id="gZm-KG-qbo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="런닝" id="tou-Hp-Hch"/>
                     <navigationItem key="navigationItem" id="JGm-j3-1jA"/>
                     <connections>
                         <outlet property="goalText" destination="Gwq-se-7QC" id="aaH-0l-EJz"/>
@@ -93,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHu-q7-AJZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755" y="-21"/>
+            <point key="canvasLocation" x="155.07246376811597" y="-21.428571428571427"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="Z3d-x9-ZJy">
@@ -122,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAR-Gp-HD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="240.57971014492756" y="-21.428571428571427"/>
+            <point key="canvasLocation" x="1150.7246376811595" y="-21.428571428571427"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="rUo-8d-Xhg">
@@ -140,21 +139,21 @@
                                 <rect key="frame" x="124" y="218" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rh-rT-bt3">
                                 <rect key="frame" x="199" y="218" width="5" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WN5-5i-dO6">
                                 <rect key="frame" x="237" y="218" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLS-gG-Xkc">
@@ -177,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2QL-6C-IX1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2118.840579710145" y="-242.41071428571428"/>
+            <point key="canvasLocation" x="3028.985507246377" y="-242.41071428571428"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="gl8-QH-jBS">
@@ -185,7 +184,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="TVt-xD-DZl" customClass="PageViewController" customModule="ShortRunning" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KbX-QH-e3i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1262" y="-11"/>
+            <point key="canvasLocation" x="2171.0144927536235" y="-11.383928571428571"/>
         </scene>
         <!--Running View Controller-->
         <scene sceneID="jiT-fl-jxI">
@@ -217,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7K-78-438" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2117" y="405"/>
+            <point key="canvasLocation" x="3026.0869565217395" y="404.46428571428572"/>
         </scene>
         <!--편집-->
         <scene sceneID="2Z1-B0-eIc">
@@ -364,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTD-kW-5aV" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5431.884057971015" y="-9.375"/>
+            <point key="canvasLocation" x="6342.0289855072469" y="-9.375"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XtN-Pa-Vdr">
@@ -378,13 +377,32 @@
                         <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cbM-mr-7js" kind="relationship" relationship="viewControllers" id="dVS-oy-yCN"/>
+                        <segue destination="5Da-Xm-edL" kind="relationship" relationship="viewControllers" id="dVS-oy-yCN"/>
                         <segue destination="pMX-un-wEa" kind="relationship" relationship="viewControllers" id="ECv-ZH-tlH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkG-MD-RoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1870" y="-11"/>
+        </scene>
+        <!--런닝-->
+        <scene sceneID="J5w-8A-eHq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Da-Xm-edL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="런닝" id="tou-Hp-Hch"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Df-sg-p9C">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cbM-mr-7js" kind="relationship" relationship="rootViewController" id="RFU-bz-61w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r8i-ce-KTf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-755.07246376811599" y="-21.428571428571427"/>
         </scene>
     </scenes>
     <resources>

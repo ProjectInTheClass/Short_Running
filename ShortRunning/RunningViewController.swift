@@ -12,39 +12,38 @@ import CoreLocation
 class RunningViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var mapView: GMSMapView!
-    let locationManager = CLLocationManager()
-    var index = 0
+//    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.startUpdatingLocation()
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
     }
     
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            let location = locations.last
-            let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 16.0)
-            mapView.camera = camera
-            mapView.animate(to: camera)
-    
-        }
+//        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//            let location = locations.last
+//            let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 16.0)
+//            mapView.camera = camera
+//            mapView.animate(to: camera)
+//    
+//        }
     
         func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
             mapView.settings.myLocationButton = true
-            locationManager.stopUpdatingLocation()
+//            locationManager.stopUpdatingLocation()
             print("didchange 호출됨")
         }
     
     
     
         func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
-            locationManager.startUpdatingLocation()
+//            locationManager.startUpdatingLocation()
             return false
         }
     

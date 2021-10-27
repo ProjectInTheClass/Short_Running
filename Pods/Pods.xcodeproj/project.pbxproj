@@ -53,7 +53,7 @@
 		E2309F84CDF17FF87E66D6CDB6B517AB /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		E2F4E7C722407F81715B67A5F9EC4FAD /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
 		EF6891B3FCA7169B2ACB30AABDC39BD0 /* Pods-ShortRunning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShortRunning.debug.xcconfig"; sourceTree = "<group>"; };
-		F8EA4175FCEEC811A101AF347DDC05C0 /* Pods-ShortRunning */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ShortRunning"; path = Pods_ShortRunning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8EA4175FCEEC811A101AF347DDC05C0 /* Pods_ShortRunning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShortRunning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 		09063D712DED5409CAD9121BA1C0850E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F8EA4175FCEEC811A101AF347DDC05C0 /* Pods-ShortRunning */,
+				F8EA4175FCEEC811A101AF347DDC05C0 /* Pods_ShortRunning.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,7 +228,7 @@
 			);
 			name = "Pods-ShortRunning";
 			productName = Pods_ShortRunning;
-			productReference = F8EA4175FCEEC811A101AF347DDC05C0 /* Pods-ShortRunning */;
+			productReference = F8EA4175FCEEC811A101AF347DDC05C0 /* Pods_ShortRunning.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -341,6 +341,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "Target Support Files/Pods-ShortRunning/Pods-ShortRunning-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -509,6 +510,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "Target Support Files/Pods-ShortRunning/Pods-ShortRunning-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

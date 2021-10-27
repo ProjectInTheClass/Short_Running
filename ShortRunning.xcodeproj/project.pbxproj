@@ -17,6 +17,7 @@
 		E00C3D55271868C400945E46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E00C3D53271868C400945E46 /* LaunchScreen.storyboard */; };
 		E00C3D6127186BD100945E46 /* RGB.png in Resources */ = {isa = PBXBuildFile; fileRef = E00C3D6027186BD100945E46 /* RGB.png */; };
 		E00C3D63271C443A00945E46 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C3D62271C443900945E46 /* MainViewController.swift */; };
+		E0A7D42627290DF800B8FF05 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7D42527290DF800B8FF05 /* LocationService.swift */; };
 		E0B12D0C271FB0AA005DFAFE /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B12D0B271FB0AA005DFAFE /* RunningViewController.swift */; };
 		E0B12D0E271FB5A1005DFAFE /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B12D0D271FB5A1005DFAFE /* RecordViewController.swift */; };
 		E0B12D10271FB68D005DFAFE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B12D0F271FB68D005DFAFE /* PageViewController.swift */; };
@@ -38,6 +39,7 @@
 		E00C3D56271868C400945E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E00C3D6027186BD100945E46 /* RGB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RGB.png; sourceTree = "<group>"; };
 		E00C3D62271C443900945E46 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E0A7D42527290DF800B8FF05 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		E0B12D0B271FB0AA005DFAFE /* RunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		E0B12D0D271FB5A1005DFAFE /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E0B12D0F271FB68D005DFAFE /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				E00C3D48271868C200945E46 /* AppDelegate.swift */,
 				E00C3D4A271868C200945E46 /* SceneDelegate.swift */,
 				E00C3D4C271868C200945E46 /* ViewController.swift */,
+				E0A7D42527290DF800B8FF05 /* LocationService.swift */,
 				E00C3D4E271868C200945E46 /* Main.storyboard */,
 				E0F238CF271FEFB000FCE933 /* StartViewController.swift */,
 				E0B12D0F271FB68D005DFAFE /* PageViewController.swift */,
@@ -230,6 +233,7 @@
 			files = (
 				E00C3D4D271868C200945E46 /* ViewController.swift in Sources */,
 				E00C3D49271868C200945E46 /* AppDelegate.swift in Sources */,
+				E0A7D42627290DF800B8FF05 /* LocationService.swift in Sources */,
 				E00C3D4B271868C200945E46 /* SceneDelegate.swift in Sources */,
 				E0B12D0E271FB5A1005DFAFE /* RecordViewController.swift in Sources */,
 				0335CD3D271F0E83008FE691 /* ListViewController.swift in Sources */,
