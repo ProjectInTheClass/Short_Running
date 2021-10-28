@@ -18,6 +18,7 @@ class CustomLocationManager:NSObject, CLLocationManagerDelegate {
     // from the manager...
     private var locationManager = CLLocationManager()
 
+    
     // here is the delegate:
     weak var delegate: CustomLocationManagerDelegate?
 
@@ -25,9 +26,10 @@ class CustomLocationManager:NSObject, CLLocationManagerDelegate {
     {
         super.init()
         locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
+        locationManager.distanceFilter = 0.1;
     }
     
     func startTracking()
@@ -37,11 +39,14 @@ class CustomLocationManager:NSObject, CLLocationManagerDelegate {
 
     func stopTracking()
     {
-        locationManager.stopUpdatingHeading()
+        locationManager.stopUpdatingLocation()
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // calling the delegate method
         delegate?.customLocationManager(didUpdate: locations)
     }
+    
+    
 }
+

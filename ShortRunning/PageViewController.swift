@@ -6,21 +6,8 @@
 //
 
 import UIKit
-//import CoreLocation
 
 class PageViewController: UIPageViewController {
-    
-//    let locationManager = CLLocationManager()
-//    var currentLocation: CLLocationCoordinate2D!
-//
-//    var locationData : [String: Double] = [:] as Dictionary
-//
-//    private func requestAuthorization() {
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.startUpdatingLocation()
-//    }
     
     var goalRunning: Int = 0
     
@@ -104,23 +91,9 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
         return firstViewControllerIndex
     }
     
-//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-//        if manager.authorizationStatus == .authorizedWhenInUse {
-////            currentLocation = locationManager!.location?.coordinate
-////            LocationService.shared.setLocationData(lan: currentLocation.latitude, lon: currentLocation.longitude)
-//        
-//        }
-//    }
-//    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let updatedLocation = locations.last
-//        locationData.updateValue((updatedLocation?.coordinate.latitude)!, forKey: "lat")
-//        locationData.updateValue((updatedLocation?.coordinate.longitude)!, forKey: "lon")
-//        LocationService.shared.locationDataArray.append(locationData)
-//        print(LocationService.shared.locationDataArray)
-//        
-//        
-//    }
+    func goToNextPage(index: Int){
+        setViewControllers([vcArray[index]], direction: .reverse, animated: true, completion: nil)
+    }
     
     
     

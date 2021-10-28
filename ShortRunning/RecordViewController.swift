@@ -11,9 +11,12 @@ import CoreLocation
 class RecordViewController: UIViewController  {
 
     @IBOutlet weak var goalMeterTextLabel: UILabel!
+    @IBOutlet weak var runningDistanceTextLabel: UILabel!
     @IBOutlet weak var textViewForDebug: UITextView!
     
-    
+    var prevLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
+    var currentLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
+    var totalRunningDistance : Double = 0.0
  
     
     override func viewDidLoad() {
@@ -24,6 +27,7 @@ class RecordViewController: UIViewController  {
         CustomLocationManager.shared.delegate = self
         CustomLocationManager.shared.startTracking()
         
+        print(prevLocation)
        
     }
     
@@ -38,18 +42,38 @@ class RecordViewController: UIViewController  {
     }
     */
     @IBAction func stopButtonTapped(_ sender: Any) {
+        CustomLocationManager.shared.stopTracking()
         LocationService.shared.locationDataArray.removeAll()
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            self.parent?.navigationController?.popToRootViewController(animated: true)
+        }
         
     }
     
 }
 extension RecordViewController: CustomLocationManagerDelegate {
     func customLocationManager(didUpdate locations: [CLLocation]) {
-        LocationService.shared.locationData.updateValue((locations.last?.coordinate.latitude)!, forKey: "lat")
-        LocationService.shared.locationData.updateValue((locations.last?.coordinate.longitude)!, forKey: "lon")
-        LocationService.shared.locationDataArray.append(LocationService.shared.locationData)
         textViewForDebug.text = LocationService.shared.locationDataArray.description
+        
+        // 위치가 변할때마다 뛴 거리만큼 더해줌
+        let currentLocation : CLLocation
+        currentLocation = locations.last!
+        print(currentLocation)
+        
+        if LocationService.shared.locationDataArray.count > 1 {
+            print("위치 배열이 1보다 큼")
+            let prevLocation = LocationService.shared.locationDataArray.last!
+            totalRunningDistance += (prevLocation.distance(from: currentLocation) / 1000)
+            print(totalRunningDistance)
+            runningDistanceTextLabel.text = String(format: "%.2f", totalRunningDistance)
+        }
+        
+        // 지도에 그려줄 PolyLine용 위도경도 정보들을 SingleTon LocationService의 locationData에 던져줌
+        LocationService.shared.locationDataArray.append(locations.last!)
+        
+        
     }
+    
+    
 }
 

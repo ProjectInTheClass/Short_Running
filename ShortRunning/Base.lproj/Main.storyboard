@@ -157,10 +157,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLS-gG-Xkc">
-                                <rect key="frame" x="174" y="665" width="67" height="31"/>
+                                <rect key="frame" x="183" y="665" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="종료"/>
                                 <connections>
                                     <action selector="stopButtonTapped:" destination="apA-yT-rA7" eventType="touchUpInside" id="X0j-6A-RvN"/>
                                 </connections>
@@ -187,6 +187,7 @@
                     </view>
                     <connections>
                         <outlet property="goalMeterTextLabel" destination="WN5-5i-dO6" id="Blu-UQ-3kJ"/>
+                        <outlet property="runningDistanceTextLabel" destination="Eba-gU-hue" id="qAd-Nd-WxS"/>
                         <outlet property="textViewForDebug" destination="2Ya-vV-bTC" id="tcz-8V-J7y"/>
                     </connections>
                 </viewController>
@@ -211,18 +212,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43v-5N-RnH" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="95" width="414" height="422"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-mM-iyB">
+                                <rect key="frame" x="170.5" y="812" width="73" height="31"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="돌아가기"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="X8A-Z9-M1j" eventType="touchUpInside" id="7Xb-6q-GCf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SaO-hD-swQ"/>
                         <color key="backgroundColor" red="0.22352941179999999" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="43v-5N-RnH" firstAttribute="centerX" secondItem="S0B-iB-3co" secondAttribute="centerX" id="I3I-vl-2Ed"/>
-                            <constraint firstItem="43v-5N-RnH" firstAttribute="trailing" secondItem="SaO-hD-swQ" secondAttribute="trailing" id="YpX-Ru-qXy"/>
-                            <constraint firstItem="43v-5N-RnH" firstAttribute="leading" secondItem="SaO-hD-swQ" secondAttribute="leading" id="b92-nI-5ka"/>
-                            <constraint firstItem="SaO-hD-swQ" firstAttribute="bottom" secondItem="43v-5N-RnH" secondAttribute="bottom" constant="345" id="kIy-lU-ZNM"/>
-                            <constraint firstItem="43v-5N-RnH" firstAttribute="top" secondItem="S0B-iB-3co" secondAttribute="top" constant="95" id="kzE-Rh-LHf"/>
+                            <constraint firstItem="43v-5N-RnH" firstAttribute="top" secondItem="SaO-hD-swQ" secondAttribute="top" id="119-Nd-jcM"/>
+                            <constraint firstItem="SUg-mM-iyB" firstAttribute="centerX" secondItem="S0B-iB-3co" secondAttribute="centerX" id="A0f-2a-0Vk"/>
+                            <constraint firstItem="43v-5N-RnH" firstAttribute="bottom" secondItem="SaO-hD-swQ" secondAttribute="bottom" constant="-100" id="AHs-gY-BCE"/>
+                            <constraint firstItem="43v-5N-RnH" firstAttribute="trailing" secondItem="SaO-hD-swQ" secondAttribute="trailing" id="TI3-cC-NNg"/>
+                            <constraint firstItem="43v-5N-RnH" firstAttribute="leading" secondItem="SaO-hD-swQ" secondAttribute="leading" id="VVJ-Oe-Are"/>
+                            <constraint firstItem="SUg-mM-iyB" firstAttribute="top" secondItem="43v-5N-RnH" secondAttribute="bottom" constant="50" id="bOY-9V-GPB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xfm-BZ-IUn"/>

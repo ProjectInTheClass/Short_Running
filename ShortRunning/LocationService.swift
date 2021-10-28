@@ -6,23 +6,15 @@
 //
 
 import Foundation
+import CoreLocation
 
 class LocationService {
     
     static var shared = LocationService()
     
-    var locationData : [String: Double] = [:] as Dictionary
-    
-    var locationDataArray : Array<Dictionary<String, Double>> = []
-    
-//    func setLocationData (lan: Double, lon: Double) {
-//        locationData.updateValue(lan, forKey: "lan")
-//        locationData.updateValue(lon, forKey: "lon")
-//        print(locationData)
-//    }
+    var locationDataArray : Array<CLLocation> = []
     
     
     
-    
-    
+
 }
