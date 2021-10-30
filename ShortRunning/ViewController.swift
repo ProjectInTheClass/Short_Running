@@ -7,6 +7,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var floatingView: UIView!
+    
 
     @IBOutlet var myImage: UIImageView!
     let picker = UIImagePickerController()
@@ -60,6 +63,12 @@ class ViewController: UIViewController {
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = UIColor.black
         }
+        
+        var panGesture = UIPanGestureRecognizer()
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
+        floatingView.isUserInteractionEnabled = true
+        floatingView.addGestureRecognizer(panGesture)
+        // 이미지 편집 오브젝트 설정
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -71,10 +80,14 @@ class ViewController: UIViewController {
     }
     //   --------------------------------------------------------------- ~ 글자 색상 변경
     
-
     
+    @objc func draggedView(_ sender:UIPanGestureRecognizer){
+        self.view.bringSubviewToFront(floatingView)
+        let translation = sender.translation(in: self.view)
+        floatingView.center = CGPoint(x: floatingView.center.x + translation.x, y: floatingView.center.y + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self.view)
+    }
 }
-
 
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
