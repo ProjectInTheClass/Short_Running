@@ -50,7 +50,55 @@ class RecordViewController: UIViewController  {
         
     }
     
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        let fileManager = FileManager.default
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let folderURL = documentsURL.appendingPathComponent("GPX")
+        
+        if !fileManager.fileExists(atPath: folderURL.path) {
+            do {
+                try fileManager.createDirectory(atPath: folderURL.path, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                    NSLog("Error")
+                }
+            }
+        
+        let gpxURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("GPX")
+        let gpxFileURL = gpxURL.appendingPathComponent(getDate())
+        
+        var gpxFileCreateString : String = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
+        "<gpx xmlns=\"http://www.topografix.com/GPX/1/1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
+        "xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\"\n" +
+          "version=\"1.1\"\n" +
+          "creator=\"gpx-poi.com\">\n"
+        
+        LocationService.shared.locationDataArray.forEach {
+            gpxFileCreateString.append("<wpt lat=\"\($0.coordinate.latitude)\" lon=\"\($0.coordinate.longitude)\">\n")
+            gpxFileCreateString.append("<time>\($0.timestamp)</time>\n")
+            gpxFileCreateString.append("</wpt>\n")
+        }
+        
+        gpxFileCreateString.append("</gpx>")
+        
+        print(gpxFileCreateString)
+        
+        do {
+            try gpxFileCreateString.write(to: gpxFileURL, atomically: true, encoding: .utf8)
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func getDate() -> String {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: now) + ".gpx"
+    }
+        
 }
+
 extension RecordViewController: CustomLocationManagerDelegate {
     func customLocationManager(didUpdate locations: [CLLocation]) {
         textViewForDebug.text = LocationService.shared.locationDataArray.description
