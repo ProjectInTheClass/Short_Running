@@ -5,39 +5,17 @@
 //  Created by 기태욱 on 2021/10/14.
 //
 import UIKit
+import PhotosUI
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var floatingView: UIView!
-    
-
+        
     @IBOutlet var myImage: UIImageView!
-    let picker = UIImagePickerController()
     
-    @IBAction func addAction(_ sender: Any) {
-
-        let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
-
-        let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()}
-
-        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-
-        alert.addAction(library)
-        alert.addAction(cancel)
-
-        present(alert, animated: true, completion: nil)
-    }
-    
-    
-    func openLibrary(){
-        picker.sourceType = .photoLibrary
-        present(picker, animated: false, completion: nil)
-    }
+    var imageIndex = 0
+    var img : [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        picker.delegate = self
         
         
         //.   --------------------------------------------------------------- 글자 색상 변경 ~
@@ -64,11 +42,7 @@ class ViewController: UIViewController {
             statusBar?.backgroundColor = UIColor.black
         }
         
-        var panGesture = UIPanGestureRecognizer()
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
-        floatingView.isUserInteractionEnabled = true
-        floatingView.addGestureRecognizer(panGesture)
-        // 이미지 편집 오브젝트 설정
+
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -81,22 +55,62 @@ class ViewController: UIViewController {
     //   --------------------------------------------------------------- ~ 글자 색상 변경
     
     
-    @objc func draggedView(_ sender:UIPanGestureRecognizer){
-        self.view.bringSubviewToFront(floatingView)
-        let translation = sender.translation(in: self.view)
-        floatingView.center = CGPoint(x: floatingView.center.x + translation.x, y: floatingView.center.y + translation.y)
-        sender.setTranslation(CGPoint.zero, in: self.view)
+    var itemProviders: [NSItemProvider] = []
+    var iterator: IndexingIterator<[NSItemProvider]>?
+    
+    @IBAction func multiselect(_ sender: Any) {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 0
+        configuration.filter = .any(of: [.images])
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
+
     }
+    
+    @IBAction func right(_ sender: Any) {
+        imageIndex = imageIndex + 1
+        if( imageIndex >= img.count ){
+            imageIndex = img.count - 1
+        }
+        myImage.image = img[imageIndex]
+    }
+    
+
+    @IBAction func left(_ sender: Any) {
+        imageIndex = imageIndex - 1
+        if( imageIndex < 0 ){
+            imageIndex = 0
+        }
+        myImage.image = img[imageIndex]
+    }
+    
 }
 
 
-extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info : [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            myImage.image = image
-            
-            print(info)
+extension ViewController: PHPickerViewControllerDelegate {
+    @available(iOS 14, *)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        itemProviders = results.map(\.itemProvider)
+        iterator = itemProviders.makeIterator()
+
+
+        while true {
+            // iterator가 있을 때 까지 img 배열에 append
+            if let itemProvider = iterator?.next(), itemProvider.canLoadObject(ofClass: UIImage.self) {
+                itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                    guard let self = self, let image = image as? UIImage else {return}
+                        self.img.append(image)
+                        DispatchQueue.main.async {
+                            self.myImage.image = self.img[self.imageIndex]
+                        }
+                    }
+            } else {
+                break
+            }
         }
-        dismiss(animated: true, completion: nil)
     }
 }
