@@ -29,7 +29,7 @@ class CustomLocationManager:NSObject, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 0.1;
+        locationManager.distanceFilter = 5.0;
     }
     
     func startTracking()

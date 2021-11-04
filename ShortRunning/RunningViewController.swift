@@ -13,6 +13,8 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet weak var mapView: GMSMapView!
     
+    let gmsMutablePath = GMSMutablePath()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +33,8 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
         marker.title = "출발점"
         marker.snippet = "Where you started"
         marker.map = mapView
+        
+        
     }
     
         func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
@@ -65,7 +69,12 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
 
 extension RunningViewController: CustomLocationManagerDelegate {
     func customLocationManager(didUpdate locations: [CLLocation]) {
+        gmsMutablePath.add(locations.last!.coordinate)
         
+        let gmsPolyLineAdd = GMSPolyline(path: gmsMutablePath)
+        gmsPolyLineAdd.map = mapView
+        
+        mapView.animate(toLocation: locations.last!.coordinate)
     }
     
     
