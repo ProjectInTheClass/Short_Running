@@ -14,6 +14,7 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet weak var mapView: GMSMapView!
     
     let gmsMutablePath = GMSMutablePath()
+    var animatedFlag : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +22,15 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
         mapView.accessibilityElementsHidden = false
+        mapView.settings.myLocationButton = true
         CustomLocationManager.shared.delegate = self
         
-        
-        let camera = GMSCameraPosition.camera(withLatitude: (LocationService.shared.locationDataArray.first?.coordinate.latitude)!, longitude: (LocationService.shared.locationDataArray.first?.coordinate.longitude)!, zoom: 16.0)
+        let camera = GMSCameraPosition.camera(withLatitude: (LocationService.shared.locationDataArray.last?.coordinate.latitude)!, longitude: (LocationService.shared.locationDataArray.last?.coordinate.longitude)!, zoom: 16.0)
         mapView.camera = camera
         mapView.animate(to: camera)
         
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: (LocationService.shared.locationDataArray.first?.coordinate.latitude)!, longitude: (LocationService.shared.locationDataArray.first?.coordinate.longitude)!)
+        marker.position = CLLocationCoordinate2D(latitude: (LocationService.shared.locationDataArray.last?.coordinate.latitude)!, longitude: (LocationService.shared.locationDataArray.last?.coordinate.longitude)!)
         marker.title = "출발점"
         marker.snippet = "Where you started"
         marker.map = mapView
@@ -37,21 +38,19 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
         
     }
     
-        func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-            mapView.settings.myLocationButton = true
-            print("didchange 호출됨")
-        }
-    
-    
     
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
-            return false
-        }
+        animatedFlag = !animatedFlag
+        return false
+    }
+    
+    
     
     @IBAction func backButtonTapped(_ sender: Any) {
         let pageViewController = self.parent as! PageViewController
         pageViewController.goToNextPage(index: 0)
     }
+    
     
 
     /*
@@ -74,7 +73,10 @@ extension RunningViewController: CustomLocationManagerDelegate {
         let gmsPolyLineAdd = GMSPolyline(path: gmsMutablePath)
         gmsPolyLineAdd.map = mapView
         
-        mapView.animate(toLocation: locations.last!.coordinate)
+        if(animatedFlag) {
+            mapView.animate(toLocation: locations.last!.coordinate)
+        }
+        
     }
     
     
