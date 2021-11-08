@@ -12,25 +12,68 @@ class RecordViewController: UIViewController  {
 
     @IBOutlet weak var goalMeterTextLabel: UILabel!
     @IBOutlet weak var runningDistanceTextLabel: UILabel!
-    @IBOutlet weak var textViewForDebug: UITextView!
+    @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var minuteLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var pauseButton: UIButton!
     
     var prevLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
     var currentLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
     var totalRunningDistance : Double = 0.0
- 
+    
+    var timer: DispatchSourceTimer?
+    var totalTime : Double = 0.0
+    var stopWatchStatus : StopWatchStatus = .start
+    var isPlaying : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("viewDidLoad >>>>> ")
         goalMeterTextLabel.text = String((self.parent as! PageViewController).goalRunning)
-        // Do any additional setup after loading the view.
+        
         CustomLocationManager.shared.delegate = self
         CustomLocationManager.shared.startTracking()
         
-        print(prevLocation)
+        initTimer()
+        changeStopWatchStatus()
        
     }
     
+    func changeStopWatchStatus () {
+        switch stopWatchStatus {
+        case .start:
+            timer?.resume()
+        case .pause:
+            timer?.suspend()
+        case .stop:
+            timer?.cancel()
+            timer = nil
+        }
+    }
+    
+    func initTimer() {
+        if timer == nil {
+            timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
+            timer?.schedule(deadline: .now(), repeating: 1)
+            timer?.setEventHandler(handler: { [self] in
+                self.totalTime += 1.0
+                initTimerText(time: totalTime)
+            })
+        }
+    }
+    
+    func initTimerText(time: Double) {
+        let hour = (Int)(fmod((totalTime/60/60), 12))
+        let minute = (Int)(fmod((totalTime/60), 60))
+        let second = (Int)(fmod(totalTime, 60))
+        
+        self.hourLabel.text = String(format: "%02d", hour)
+        self.minuteLabel.text = String(format: "%02d", minute)
+        self.secondLabel.text = String(format: "%02d", second)
+    }
+    
+       
 
     /*
     // MARK: - Navigation
@@ -41,6 +84,24 @@ class RecordViewController: UIViewController  {
         // Pass the selected object to the new view controller.
     }
     */
+    
+  
+    @IBAction func pauseButtonTapped(_ sender: Any) {
+        if isPlaying {
+            stopWatchStatus = .pause
+            isPlaying = false
+            setButton("재시작")
+            CustomLocationManager.shared.stopTracking()
+        } else {
+            stopWatchStatus = .start
+            isPlaying = true
+            setButton("일시정지")
+            CustomLocationManager.shared.startTracking()
+        }
+        changeStopWatchStatus()
+    }
+    
+    
     @IBAction func stopButtonTapped(_ sender: Any) {
         CustomLocationManager.shared.stopTracking()
         LocationService.shared.locationDataArray.removeAll()
@@ -80,7 +141,6 @@ class RecordViewController: UIViewController  {
         
         gpxFileCreateString.append("</gpx>")
         
-        print(gpxFileCreateString)
         
         do {
             try gpxFileCreateString.write(to: gpxFileURL, atomically: true, encoding: .utf8)
@@ -101,18 +161,16 @@ class RecordViewController: UIViewController  {
 
 extension RecordViewController: CustomLocationManagerDelegate {
     func customLocationManager(didUpdate locations: [CLLocation]) {
-        textViewForDebug.text = LocationService.shared.locationDataArray.description
         
+        
+        print("UpDating MYLOCATION!!!! >>>>")
         // 위치가 변할때마다 뛴 거리만큼 더해줌
         let currentLocation : CLLocation
         currentLocation = locations.last!
-        print(currentLocation)
-        
+
         if LocationService.shared.locationDataArray.count > 1 {
-            print("위치 배열이 1보다 큼")
             let prevLocation = LocationService.shared.locationDataArray.last!
             totalRunningDistance += (prevLocation.distance(from: currentLocation) / 1000)
-            print(totalRunningDistance)
             runningDistanceTextLabel.text = String(format: "%.2f", totalRunningDistance)
         }
         
@@ -122,6 +180,9 @@ extension RecordViewController: CustomLocationManagerDelegate {
         
     }
     
-    
+    func setButton(_ string: String) {
+        self.pauseButton.setTitle(string, for: .normal)
+        self.pauseButton.setTitle(string, for: .highlighted)
+    }
 }
 
