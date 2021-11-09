@@ -21,5 +21,11 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>찍은 사진을 저장하기 위한 권한 요청입니다.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>찍은 사진을 확인하기 위한 권한 요청입니다.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>러닝 시 카메라 사용을 위한 권한 요청입니다.</string>
 </dict>
 </plist>

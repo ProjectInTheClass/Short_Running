@@ -103,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oo2-DU-lgu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="TVt-xD-DZl" kind="embed" id="y3x-dg-72C"/>
@@ -112,6 +112,25 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sze-Tr-5Lg">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.28627450980392155" green="0.30980392156862746" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Running" id="z87-q3-kl5">
+                                        <barButtonItem key="backBarButtonItem" title="fff" id="xIC-61-yfo"/>
+                                        <barButtonItem key="leftBarButtonItem" title="취소" style="plain" id="G4q-Kl-kZm">
+                                            <connections>
+                                                <action selector="calcelButtonTapped:" destination="Ah4-SS-j7E" id="ELo-Lk-9HP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="camera" id="aHv-Da-Cwb">
+                                            <connections>
+                                                <action selector="cameraButtonTapped:" destination="Ah4-SS-j7E" id="StI-n0-gfX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
                             </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RoY-ae-e4a"/>
@@ -132,10 +151,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="i8s-NA-8vq">
-                                <rect key="frame" x="67" y="144" width="280" height="4"/>
+                                <rect key="frame" x="67" y="214" width="280" height="4"/>
                             </progressView>
                             <stackView opaque="NO" contentMode="center" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Gq2-Aa-IDh">
-                                <rect key="frame" x="128.5" y="220" width="157.5" height="20.5"/>
+                                <rect key="frame" x="128.5" y="290" width="157.5" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eba-gU-hue">
                                         <rect key="frame" x="0.0" y="0.0" width="34.5" height="20.5"/>
@@ -157,25 +176,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLS-gG-Xkc">
-                                <rect key="frame" x="0.0" y="665" width="414" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="그냥 종료"/>
-                                <connections>
-                                    <action selector="stopButtonTapped:" destination="apA-yT-rA7" eventType="touchUpInside" id="X0j-6A-RvN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv2-bH-12F">
-                                <rect key="frame" x="0.0" y="723" width="414" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="저장 후 종료 ( 파일 생성 )"/>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="apA-yT-rA7" eventType="touchUpInside" id="ggb-LL-jXY"/>
-                                    <action selector="stopButtonTapped:" destination="apA-yT-rA7" eventType="touchUpInside" id="aRc-dW-dpx"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="vSI-MC-9DS">
-                                <rect key="frame" x="143" y="400.5" width="129" height="20.5"/>
+                                <rect key="frame" x="143" y="470.5" width="129" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptw-oN-WSv">
                                         <rect key="frame" x="0.0" y="0.0" width="21" height="20.5"/>
@@ -210,7 +212,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🕛" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5Q-rt-DPf">
-                                <rect key="frame" x="180" y="320.5" width="54" height="60"/>
+                                <rect key="frame" x="180" y="390.5" width="54" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -236,6 +238,9 @@
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="savedButtonTapped:" destination="apA-yT-rA7" eventType="touchUpInside" id="EjW-JP-xqF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -246,20 +251,14 @@
                         <constraints>
                             <constraint firstItem="a5Q-rt-DPf" firstAttribute="leading" secondItem="EUy-er-yzE" secondAttribute="leading" constant="180" id="3Nn-iY-hZh"/>
                             <constraint firstItem="EUy-er-yzE" firstAttribute="trailing" secondItem="a5Q-rt-DPf" secondAttribute="trailing" constant="180" id="5Qf-Jo-4Ht"/>
-                            <constraint firstItem="VDg-ko-8dh" firstAttribute="top" secondItem="Dv2-bH-12F" secondAttribute="bottom" constant="58" id="5sJ-gs-ZMP"/>
                             <constraint firstItem="EUy-er-yzE" firstAttribute="trailing" secondItem="i8s-NA-8vq" secondAttribute="trailing" constant="67" id="7J6-0C-fcC"/>
-                            <constraint firstItem="EUy-er-yzE" firstAttribute="trailing" secondItem="gLS-gG-Xkc" secondAttribute="trailing" id="8yI-ZB-kNr"/>
                             <constraint firstItem="a5Q-rt-DPf" firstAttribute="top" secondItem="Gq2-Aa-IDh" secondAttribute="bottom" constant="80" id="Bj3-un-WD0"/>
                             <constraint firstItem="vSI-MC-9DS" firstAttribute="leading" secondItem="EUy-er-yzE" secondAttribute="leading" constant="143" id="EPR-C7-xz6"/>
-                            <constraint firstItem="Dv2-bH-12F" firstAttribute="top" secondItem="gLS-gG-Xkc" secondAttribute="bottom" constant="27" id="EvA-hG-DIf"/>
-                            <constraint firstItem="i8s-NA-8vq" firstAttribute="top" secondItem="EUy-er-yzE" secondAttribute="top" constant="100" id="Jqt-KG-1G9"/>
+                            <constraint firstItem="i8s-NA-8vq" firstAttribute="top" secondItem="EUy-er-yzE" secondAttribute="top" constant="170" id="Jqt-KG-1G9"/>
                             <constraint firstItem="i8s-NA-8vq" firstAttribute="leading" secondItem="EUy-er-yzE" secondAttribute="leading" constant="67" id="KtB-fW-IgR"/>
-                            <constraint firstItem="Dv2-bH-12F" firstAttribute="leading" secondItem="EUy-er-yzE" secondAttribute="leading" id="Svf-8s-TF7"/>
                             <constraint firstItem="vSI-MC-9DS" firstAttribute="top" secondItem="a5Q-rt-DPf" secondAttribute="bottom" constant="20" id="bTz-fa-Dfd"/>
-                            <constraint firstItem="EUy-er-yzE" firstAttribute="trailing" secondItem="Dv2-bH-12F" secondAttribute="trailing" id="eVu-oi-CO1"/>
                             <constraint firstItem="EUy-er-yzE" firstAttribute="trailing" secondItem="VDg-ko-8dh" secondAttribute="trailing" constant="20" id="fa5-YN-q2P"/>
                             <constraint firstItem="i8s-NA-8vq" firstAttribute="centerX" secondItem="EUy-er-yzE" secondAttribute="centerX" id="hF9-mz-LYk"/>
-                            <constraint firstItem="gLS-gG-Xkc" firstAttribute="leading" secondItem="EUy-er-yzE" secondAttribute="leading" id="isn-4u-cLq"/>
                             <constraint firstItem="Gq2-Aa-IDh" firstAttribute="top" secondItem="i8s-NA-8vq" secondAttribute="bottom" constant="72" id="lIv-EZ-UYh"/>
                             <constraint firstItem="Gq2-Aa-IDh" firstAttribute="centerX" secondItem="UhM-8R-H0u" secondAttribute="centerX" id="lql-im-Exb"/>
                             <constraint firstItem="VDg-ko-8dh" firstAttribute="leading" secondItem="EUy-er-yzE" secondAttribute="leading" constant="20" id="ste-vI-B4F"/>
@@ -387,7 +386,7 @@
         <scene sceneID="Owm-Wp-kDw">
             <objects>
                 <viewController id="iUV-7S-M2g" customClass="ViewController" customModule="ShortRunning" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="7If-RA-HQE">
+                    <view key="view" contentMode="scaleToFill" id="7If-RA-HQE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

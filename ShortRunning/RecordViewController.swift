@@ -25,6 +25,7 @@ class RecordViewController: UIViewController  {
     var totalTime : Double = 0.0
     var stopWatchStatus : StopWatchStatus = .start
     var isPlaying : Bool = true
+    var gpxDownloadUrl : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,16 +103,21 @@ class RecordViewController: UIViewController  {
     }
     
     
-    @IBAction func stopButtonTapped(_ sender: Any) {
+    @IBAction func savedButtonTapped(_ sender: Any) {
+        let savedFilePath = savedGpxFile()
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        savedUserRunningData(dist: totalRunningDistance, date: dateFormatter.string(from: now), duration: totalTime, gpx: savedFilePath)
+        
         CustomLocationManager.shared.stopTracking()
         LocationService.shared.locationDataArray.removeAll()
         self.dismiss(animated: true) {
             self.parent?.navigationController?.popToRootViewController(animated: true)
         }
-        
     }
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    func savedGpxFile() -> String {
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let folderURL = documentsURL.appendingPathComponent("GPX")
@@ -126,6 +132,7 @@ class RecordViewController: UIViewController  {
         
         let gpxURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("GPX")
         let gpxFileURL = gpxURL.appendingPathComponent(getDate())
+        
         
         var gpxFileCreateString : String = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
         "<gpx xmlns=\"http://www.topografix.com/GPX/1/1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
@@ -148,6 +155,23 @@ class RecordViewController: UIViewController  {
             print(error)
         }
         
+        return gpxFileURL.absoluteString
+    }
+    
+    func savedUserRunningData(dist: Double, date: String, duration: Double, gpx: String) {
+        
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.string(from: now)
+        
+        let defaults = UserDefaults.standard
+        let dict = ["Distance" : dist, "Date" : date, "Duration" : duration, "GpxURL" : gpx] as [String : Any]
+        let appDataInfo = RunningDataInfo.shared
+        defaults.set(dict, forKey: "SavedRunningData"+"\(appDataInfo.index)")
+        appDataInfo.index += 1
+        print(UserDefaults.standard.value(forKey: "SavedRunningData"+"\(appDataInfo.index-1)") as Any)
+        print("Global Index >>>> \(appDataInfo.index)")
     }
     
     func getDate() -> String {
