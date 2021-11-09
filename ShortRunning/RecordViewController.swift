@@ -16,6 +16,7 @@ class RecordViewController: UIViewController  {
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var runningProgressBar: UIProgressView!
     
     var prevLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
     var currentLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
@@ -35,6 +36,8 @@ class RecordViewController: UIViewController  {
         
         CustomLocationManager.shared.delegate = self
         CustomLocationManager.shared.startTracking()
+        
+        runningProgressBar.progress = 0.0
         
         initTimer()
         changeStopWatchStatus()
@@ -180,6 +183,15 @@ class RecordViewController: UIViewController  {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.string(from: now) + ".gpx"
     }
+    
+    func updatingProgressBar() {
+        if let text = goalMeterTextLabel.text {
+            let numberFormatter = NumberFormatter()
+            let totalDistanceFromUILabel = numberFormatter.number(from: text)?.doubleValue
+            let remain = (Float(totalRunningDistance) / Float(totalDistanceFromUILabel!))
+            runningProgressBar.progress = remain
+        }
+    }
         
 }
 
@@ -198,6 +210,16 @@ extension RecordViewController: CustomLocationManagerDelegate {
             runningDistanceTextLabel.text = String(format: "%.2f", totalRunningDistance)
         }
         
+        if let text = goalMeterTextLabel.text {
+            let numberFormatter = NumberFormatter()
+            let totalDistanceFromUILabel = numberFormatter.number(from: text)?.doubleValue
+
+            if(totalRunningDistance <= totalDistanceFromUILabel!) {
+                updatingProgressBar()
+            } else {
+                return
+            }
+        }
         // 지도에 그려줄 PolyLine용 위도경도 정보들을 SingleTon LocationService의 locationData에 던져줌
         LocationService.shared.locationDataArray.append(locations.last!)
         

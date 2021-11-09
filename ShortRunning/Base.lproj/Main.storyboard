@@ -151,10 +151,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="i8s-NA-8vq">
-                                <rect key="frame" x="67" y="214" width="280" height="4"/>
+                                <rect key="frame" x="67" y="214" width="280" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="8ES-7P-4US"/>
+                                </constraints>
                             </progressView>
                             <stackView opaque="NO" contentMode="center" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Gq2-Aa-IDh">
-                                <rect key="frame" x="128.5" y="290" width="157.5" height="20.5"/>
+                                <rect key="frame" x="128.5" y="302" width="157.5" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eba-gU-hue">
                                         <rect key="frame" x="0.0" y="0.0" width="34.5" height="20.5"/>
@@ -177,7 +180,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="vSI-MC-9DS">
-                                <rect key="frame" x="143" y="470.5" width="129" height="20.5"/>
+                                <rect key="frame" x="143" y="482.5" width="129" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptw-oN-WSv">
                                         <rect key="frame" x="0.0" y="0.0" width="21" height="20.5"/>
@@ -212,7 +215,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🕛" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5Q-rt-DPf">
-                                <rect key="frame" x="180" y="390.5" width="54" height="60"/>
+                                <rect key="frame" x="180" y="402.5" width="54" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -272,6 +275,7 @@
                         <outlet property="minuteLabel" destination="rAY-ew-K7D" id="dNx-7P-8GD"/>
                         <outlet property="pauseButton" destination="T42-bi-51i" id="Thl-Me-bhz"/>
                         <outlet property="runningDistanceTextLabel" destination="Eba-gU-hue" id="qAd-Nd-WxS"/>
+                        <outlet property="runningProgressBar" destination="i8s-NA-8vq" id="t6V-v1-dvf"/>
                         <outlet property="secondLabel" destination="9dj-0f-7v5" id="0ek-PF-ug9"/>
                     </connections>
                 </viewController>
