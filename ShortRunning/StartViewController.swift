@@ -17,10 +17,11 @@ class StartViewController: UIViewController {
         
         imagePickerController.delegate = self
         // Do any additional setup after loading the view.
+        
     
     }
     
-
+    
     
     // MARK: - Navigation
 
@@ -42,13 +43,14 @@ class StartViewController: UIViewController {
     }
     
     
-    @IBAction func calcelButtonTapped(_ sender: Any) {
+    @IBAction func cancelButtonTapped(_ sender: Any) {
         CustomLocationManager.shared.stopTracking()
         LocationService.shared.locationDataArray.removeAll()
         self.dismiss(animated: true) {
-            self.parent?.navigationController?.popToRootViewController(animated: true)
+            self.parent?.navigationController?.popViewController(animated: true)
         }
     }
+    
     
 }
 

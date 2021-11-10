@@ -21,6 +21,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>위치 추적을 위해 요청합니다.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>위치 추적을 위해 요청합니다.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>찍은 사진을 저장하기 위한 권한 요청입니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

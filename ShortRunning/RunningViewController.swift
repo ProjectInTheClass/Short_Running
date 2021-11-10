@@ -23,7 +23,7 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
         mapView.isMyLocationEnabled = true
         mapView.accessibilityElementsHidden = false
         mapView.settings.myLocationButton = true
-        CustomLocationManager.shared.delegate = self
+        
         
         let camera = GMSCameraPosition.camera(withLatitude: (LocationService.shared.locationDataArray.last?.coordinate.latitude)!, longitude: (LocationService.shared.locationDataArray.last?.coordinate.longitude)!, zoom: 16.0)
         mapView.camera = camera
@@ -51,6 +51,9 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
         pageViewController.goToNextPage(index: 0)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        CustomLocationManager.shared.delegate = self
+    }
     
 
     /*
@@ -62,7 +65,12 @@ class RunningViewController: UIViewController, GMSMapViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-  
+ 
+    override func didReceiveMemoryWarning() {
+        print("MemoryWarning!!")
+    }
+    
+    
 
 }
 

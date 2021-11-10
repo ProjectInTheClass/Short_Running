@@ -34,7 +34,6 @@ class RecordViewController: UIViewController  {
         print("viewDidLoad >>>>> ")
         goalMeterTextLabel.text = String((self.parent as! PageViewController).goalRunning)
         
-        CustomLocationManager.shared.delegate = self
         CustomLocationManager.shared.startTracking()
         
         runningProgressBar.progress = 0.0
@@ -192,7 +191,19 @@ class RecordViewController: UIViewController  {
             runningProgressBar.progress = remain
         }
     }
-        
+    
+    override func didReceiveMemoryWarning() {
+        print("MemoryWarning!!")
+    }
+    
+    func setButton(_ string: String) {
+        self.pauseButton.setTitle(string, for: .normal)
+        self.pauseButton.setTitle(string, for: .highlighted)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        CustomLocationManager.shared.delegate = self
+    }
 }
 
 extension RecordViewController: CustomLocationManagerDelegate {
@@ -226,9 +237,5 @@ extension RecordViewController: CustomLocationManagerDelegate {
         
     }
     
-    func setButton(_ string: String) {
-        self.pauseButton.setTitle(string, for: .normal)
-        self.pauseButton.setTitle(string, for: .highlighted)
-    }
 }
 
